@@ -6,7 +6,7 @@ use Exception;
 use Http\Promise\Promise;
 use Http\Promise\RejectedPromise;
 use Microsoft\Graph\Models\Microsoft\Graph\InferenceClassification;
-use Microsoft\Graph\Users\Item\InferenceClassification\Overrides\Item\InferenceClassificationOverrideRequestBuilder;
+use Microsoft\Graph\Users\Item\InferenceClassification\Overrides\Item\InferenceClassificationOverrideItemRequestBuilder;
 use Microsoft\Graph\Users\Item\InferenceClassification\Overrides\OverridesRequestBuilder;
 use Microsoft\Kiota\Abstractions\HttpMethod;
 use Microsoft\Kiota\Abstractions\RequestAdapter;
@@ -14,6 +14,7 @@ use Microsoft\Kiota\Abstractions\RequestInformation;
 use Microsoft\Kiota\Abstractions\RequestOption;
 use Microsoft\Kiota\Abstractions\ResponseHandler;
 use Microsoft\Kiota\Abstractions\Serialization\Parsable;
+use Microsoft\Kiota\Abstractions\Serialization\ParsableFactory;
 
 class InferenceClassificationRequestBuilder 
 {
@@ -52,6 +53,9 @@ class InferenceClassificationRequestBuilder
         $requestInfo->urlTemplate = $this->urlTemplate;
         $requestInfo->pathParameters = $this->pathParameters;
         $requestInfo->httpMethod = HttpMethod::DELETE;
+        if ($headers !== null) {
+            $requestInfo->headers = array_merge($requestInfo->headers, $headers);
+        }
         if ($options !== null) {
             $requestInfo->addRequestOptions(...$options);
         }
@@ -70,6 +74,9 @@ class InferenceClassificationRequestBuilder
         $requestInfo->urlTemplate = $this->urlTemplate;
         $requestInfo->pathParameters = $this->pathParameters;
         $requestInfo->httpMethod = HttpMethod::GET;
+        if ($headers !== null) {
+            $requestInfo->headers = array_merge($requestInfo->headers, $headers);
+        }
         if ($queryParameters !== null) {
             $requestInfo->setQueryParameters($queryParameters);
         }
@@ -91,6 +98,9 @@ class InferenceClassificationRequestBuilder
         $requestInfo->urlTemplate = $this->urlTemplate;
         $requestInfo->pathParameters = $this->pathParameters;
         $requestInfo->httpMethod = HttpMethod::PATCH;
+        if ($headers !== null) {
+            $requestInfo->headers = array_merge($requestInfo->headers, $headers);
+        }
         $requestInfo->setContentFromParsable($this->requestAdapter, "application/json", $body);
         if ($options !== null) {
             $requestInfo->addRequestOptions(...$options);
@@ -134,12 +144,12 @@ class InferenceClassificationRequestBuilder
     /**
      * Gets an item from the Microsoft\Graph.users.item.inferenceClassification.overrides.item collection
      * @param string $id Unique identifier of the item
-     * @return InferenceClassificationOverrideRequestBuilder
+     * @return InferenceClassificationOverrideItemRequestBuilder
     */
-    public function overridesById(string $id): InferenceClassificationOverrideRequestBuilder {
+    public function overridesById(string $id): InferenceClassificationOverrideItemRequestBuilder {
         $urlTplParams = $this->pathParameters;
         $urlTplParams['inferenceClassificationOverride_id'] = $id;
-        return new InferenceClassificationOverrideRequestBuilder($urlTplParams, $this->requestAdapter);
+        return new InferenceClassificationOverrideItemRequestBuilder($urlTplParams, $this->requestAdapter);
     }
 
     /**
