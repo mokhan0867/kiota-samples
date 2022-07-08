@@ -1,5 +1,5 @@
 
-/** The collection of multi-value extended properties defined for the mailFolder. Read-only. Nullable. */
+/** Get multiValueExtendedProperties from users */
 export class MultiValueExtendedPropertiesRequestBuilderGetQueryParameters {
     /** Include count of items */
     public count?: boolean | undefined;

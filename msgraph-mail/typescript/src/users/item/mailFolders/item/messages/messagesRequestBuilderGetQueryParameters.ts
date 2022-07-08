@@ -1,5 +1,5 @@
 
-/** The collection of messages in the mailFolder. */
+/** Get messages from users */
 export class MessagesRequestBuilderGetQueryParameters {
     /** Include count of items */
     public count?: boolean | undefined;

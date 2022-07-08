@@ -1,5 +1,5 @@
 
-/** The collection of rules that apply to the user's Inbox folder. */
+/** Get messageRules from users */
 export class MessageRulesRequestBuilderGetQueryParameters {
     /** Include count of items */
     public count?: boolean | undefined;
